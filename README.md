@@ -1,5 +1,10 @@
 # Folder system
 
-A drive kind of folder system
+A drive kind of folder system.
+One can create/delete/traverse through folders.
 
-Tech stack - React/Redux
+![folder-system](folder-system.png)
+
+## Tech stack
+ - React
+ - Redux
