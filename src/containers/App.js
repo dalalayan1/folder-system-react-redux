@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import App from '../components/App';
 import { bindActionCreators } from 'redux';
-import { getAppDetails, addFolder , removeItem} from '../actions';
+import { getAppDetails, addFolder , changeDirectory, modifyDirectoryList, removeItem} from '../actions';
 
 
 function mapStateToProps(state) {
@@ -16,6 +16,8 @@ function mapDispatchToProps(dispatch) {
   return {
         getAppDetails: bindActionCreators(getAppDetails, dispatch),
         addFolder: bindActionCreators(addFolder, dispatch),
+        changeDirectory: bindActionCreators(changeDirectory, dispatch),
+        modifyDirectoryList: bindActionCreators(modifyDirectoryList, dispatch),
         removeFolderWrapper: bindActionCreators(removeItem, dispatch)
   }
 }
