@@ -5,9 +5,9 @@ export const getAppDetails = (data) => {
     }
 }
 
-export const updateList = (data) => {
+export const addFolder = (data) => {
     return {
-        type: 'UPDATE_LIST',
+        type: 'ADD_FOLDER',
         item: data
     }
 }

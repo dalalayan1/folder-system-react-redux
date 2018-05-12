@@ -7,9 +7,9 @@ import registerServiceWorker from './registerServiceWorker';
 
 import { createStore } from 'redux';
 
-import DnDApp from './reducers';
+import FSapp from './reducers';
  
-const store = createStore(DnDApp);
+const store = createStore(FSapp);
 
 render(
     <Provider store={store}>

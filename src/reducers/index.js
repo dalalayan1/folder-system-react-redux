@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import appReducer from './reducers';
 
-const DnDApp = combineReducers({
+const FSapp = combineReducers({
     appReducer
 })
 
-export default DnDApp;
+export default FSapp;

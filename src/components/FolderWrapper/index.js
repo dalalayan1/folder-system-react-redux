@@ -3,8 +3,9 @@ import Folder from '../Folder';
 
 class FolderWrapper extends Component {
 
-    handleFolderClick = () => {
-
+    handleFolderClick = (evt) => {
+        evt.preventDefault();
+debugger
     }
 
     render() {
@@ -14,7 +15,7 @@ class FolderWrapper extends Component {
         return (
           <div className="folder-wrapper">
             { folderList.map((eachFolderName, index)=> (
-                <Folder name = { eachFolderName } onClick = { this.handleFolderClick } />
+                <Folder key = { index } name = { eachFolderName } onClick = { this.handleFolderClick } />
             ))}
           </div>
         );

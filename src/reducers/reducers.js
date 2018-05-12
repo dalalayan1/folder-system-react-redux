@@ -1,23 +1,28 @@
-const appReducer = (state = {}, action) => {
+const appReducer = (state = {
+    folderList: []
+}, action) => {
 
     switch (action.type) {
-      case 'APP_DETAILS':
+        case 'APP_DETAILS':
+        debugger
             let appContent = {};
             action.payload.forEach(element => {
                 appContent = Object.assign({}, appContent, state, { [element.type]: element.list } )
             });
 
-            return appContent;
-      case 'UPDATE_LIST':
-        return Object.assign({}, state, { [action.item.addType]: [...state[action.item.addType], action.item.item] },
-            { [action.item.removeType]: action.item.removeType && state[action.item.removeType].filter((eachItem) => eachItem.title !== action.item.item.title) });
-      case 'REMOVE_CARD':
+                return appContent;
+        case 'ADD_FOLDER' :
+            const updatedFolderList = [ ...state.folderList, action.item ];
+            debugger
+            return Object.assign({}, state, { folderList: updatedFolderList })
+        
+        case 'REMOVE_CARD':
             const { type, title } = action.item;
 
             const newList = state[type].filter((eachList) => eachList.title !== title);
-        return Object.assign({}, state, {[type]: newList})
-      default:
-        return state
+            return Object.assign({}, state, {[type]: newList})
+        default:
+            return state
     }
 }
   
