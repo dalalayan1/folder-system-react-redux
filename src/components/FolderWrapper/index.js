@@ -13,11 +13,11 @@ class FolderWrapper extends Component {
         const { folderList } = this.props;
     
         return (
-          <div className="folder-wrapper">
-            { folderList.map((eachFolder, index)=> (
-                <Folder key = { index } name = { eachFolder } onClick = { this.handleFolderClick } />
-            ))}
-          </div>
+            <div className="folder-system">
+                { folderList.map((eachFolder, index)=> (
+                    <Folder key = { index } name = { eachFolder } onClick = { this.handleFolderClick } />
+                ))}
+            </div>
         );
       }
 }

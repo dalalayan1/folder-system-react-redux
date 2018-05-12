@@ -5,7 +5,6 @@ import React, { Component } from "react";
 import DirectoryLink from "../DirectoryLink";
 import FolderWrapper from "../FolderWrapper";
 import CreateFolderModal from "../CreateFolderModal";
-import "./index.css";
 
 class App extends Component {
 
@@ -46,6 +45,14 @@ class App extends Component {
     this.props.modifyDirectoryList(name);
   }
 
+  closeModal = (e) => {
+    if ( e.target === document.querySelectorAll('.create-folder-modal-wrapper')[0] ) {
+      this.setState({
+        showFolderModal: false
+      });
+    }
+  }
+
   componentWillReceiveProps(newProps) {
     
   }
@@ -71,17 +78,16 @@ class App extends Component {
           ))}
         </div>
         <div className="wrapper">
-            <div className="folder-system">
-                <FolderWrapper
-                  folderList = { folderList }
-                  onClick = { this.changeDirectory }
-                />
-            </div>
+          <FolderWrapper
+            folderList = { folderList }
+            onClick = { this.changeDirectory }
+          />
         </div>
-        <button onClick = { this.showModal }>+ NEW FOLDER</button>
+        <button  className = 'add-folder-cta' onClick = { this.showModal }>+ NEW FOLDER</button>
         { this.state.showFolderModal &&
           <CreateFolderModal
             onClick = { this.createFolder }
+            closeModal = { this.closeModal }
           />
         }
       </div>

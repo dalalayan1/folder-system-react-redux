@@ -1,60 +1,113 @@
-body {
+*,body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
 
-.wrapper {
-    display: flex;
+
+
+.App-header {
+  background-color: #0095E2;;
+  padding: 20px;
+  color: white;
+  text-align: center;
 }
 
-label {
-  display: block;
+.App-title {
+  font-size: 1.5em;
 }
 
-.list-wrapper {
-  width: 100%;
-  padding: 10px;
-  box-shadow: 0 2px 20px rgba(0,0,0,.5)
+.App-intro {
+  font-size: large;
 }
 
-.list {
+.directory-wrapper {
   background: #FAFAFA;
-  height: 600px;
-  padding: 20px
+  border-bottom: 1px solid #ddd;
+  font-size: 25px;
 }
-
-.list h2 {
-  text-transform: uppercase;
+.directory {
+  padding: 10px 0;
+  display: inline-block;
 }
-
-.list .Droppable {
-  height: 100%;
-}
-
-.list .item {
+.directory > a {
+  text-decoration: none;
   padding: 10px;
-  margin: 10px auto;
-  position: relative;
-  border-radius: 10px;
-  box-shadow: 0 2px 20px rgba(0,0,0,.5)
+  color: #000;
+}
+.directory.last > a {
+  color: #0095E2;
+} 
+.directory > span {
+  color: #000;
 }
 
-.list .item.todo {
-  background: #F77045; 
-}
-
-.list .item.inprogress {
-  background: #F7E445;  
-}
-
-.list .item.done {
-  background: #47F745; 
-}
-
-.list .item .remove {
+.add-folder-cta {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  right: 10px;
+  top: 166px;
+  background: #0095E2;
+  color: #fff;
+  padding: 20px;
+  border-radius: 35px;
   cursor: pointer;
+}
+
+.create-folder-modal {
+  width: 400px;
+  text-align: center;
+  background: #E9E9E9;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.create-folder-modal-wrapper {
+  height: 100vh;
+  width: 100vw;
+  background: #000;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.create-folder-modal > input {
+  width: 70%;
+  padding: 10px;
+  font-size: 15px;
+  margin: 40px auto;
+}
+
+.create-folder-modal > button.create-folder-cta {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-radius: 15px;
+  background: #fff;
+  font-size: 15px;
+  margin: 40px auto;
+}
+
+.folder-wrapper {
+  width: 100vw;
+  border-bottom: 1px solid #ddd;
+}
+
+.folder {
+  padding: 10px;
+  margin: 10px 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.folder-img {
+  height: 50px;
+  width: 50px;
+}
+
+.folder-name {
+  font-size: 20px;
 }
