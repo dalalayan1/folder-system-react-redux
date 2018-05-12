@@ -9,13 +9,7 @@ const appReducer = (state = {
 }, action) => {
 
     switch (action.type) {
-        case 'APP_DETAILS':
-            let appContent = {};
-            action.payload.forEach(element => {
-                appContent = Object.assign({}, appContent, state, { [element.type]: element.list } )
-            });
-            return appContent;
-
+        
         case 'ADD_FOLDER' :
             let updatedFolderList = state.folderList;
             if( !(state.folderList).includes(`${action.item}`)) {
@@ -27,11 +21,11 @@ const appReducer = (state = {
                 folderStructureObj = folderStructureObj[eachDirectory];
             });
             if ( folderStructureObj[`${action.item}`] ) {
-                updatedMsg = 'Sorry! Folder already exits!';
+                updatedMsg = `Sorry! Folder "${action.item}" already exits!`;
             }
             else {
                 folderStructureObj[`${action.item}`] = {};
-                updatedMsg = 'Folder created successfully!';
+                updatedMsg = `Folder "${action.item}" created successfully!`;
             }
             return Object.assign({}, state, { msg: updatedMsg }, { folderList: updatedFolderList })
         
@@ -70,9 +64,14 @@ const appReducer = (state = {
             return Object.assign({}, state, { msg: updatedMsg2 }, { directory: `${action.item}` }, { directoryList: updatedDirectoryList1 }, { folderList: updatedFolderList2 })
 
         case 'REMOVE_FOLDER':
-            const { type, title } = action.item;
-            const newList = state[type].filter((eachList) => eachList.title !== title);
-            return Object.assign({}, state, {[type]: newList})
+            let folderStructureObj3 = state.folderStructure, updatedMsg3;
+            const updatedFolderList3 = state.folderList.filter((item) => { return item !== `${action.item}` })
+            state.directoryList.forEach((eachDirectory, index) => {
+                folderStructureObj3 = folderStructureObj3[eachDirectory];
+            });
+            delete folderStructureObj3[`${action.item}`];
+            updatedMsg3 = `Deleted "${action.item}" successfully!`;
+            return Object.assign({}, state, { msg: updatedMsg3 }, { folderList: updatedFolderList3 })
         default:
             return state
     }

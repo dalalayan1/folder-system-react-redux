@@ -8,6 +8,11 @@ class FolderWrapper extends Component {
         this.props.onClick(name);
     }
 
+    handleDeleteFolder = (e, name) => {
+        e.preventDefault();
+        this.props.handleDeleteFolder(name);
+      }
+
     render() {
 
         const { folderList } = this.props;
@@ -15,7 +20,7 @@ class FolderWrapper extends Component {
         return (
             <div className="folder-system">
                 { folderList.map((eachFolder, index)=> (
-                    <Folder key = { index } name = { eachFolder } onClick = { this.handleFolderClick } />
+                    <Folder key = { index } name = { eachFolder } handleDeleteFolder = { this.handleDeleteFolder } onClick = { this.handleFolderClick } />
                 ))}
             </div>
         );

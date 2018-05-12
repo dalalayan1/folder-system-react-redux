@@ -17,7 +17,7 @@ function mapDispatchToProps(dispatch) {
         addFolder: bindActionCreators(addFolder, dispatch),
         changeDirectory: bindActionCreators(changeDirectory, dispatch),
         modifyDirectoryList: bindActionCreators(modifyDirectoryList, dispatch),
-        removeFolderWrapper: bindActionCreators(removeFolder, dispatch)
+        removeFolder: bindActionCreators(removeFolder, dispatch)
   }
 }
 
