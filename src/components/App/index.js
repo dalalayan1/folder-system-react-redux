@@ -30,7 +30,11 @@ class App extends Component {
   createFolder = (evt, name) => {
     evt.preventDefault();
     const folderName = document.querySelectorAll(".create-folder-input")[0].value;
+    document.querySelectorAll(".create-folder-input")[0].value = '';
     folderName && this.props.addFolder(folderName);
+    this.setState({
+      showFolderModal: !this.state.showFolderModal
+    })
   }
 
   changeDirectory = (directoryName) => {
@@ -39,7 +43,6 @@ class App extends Component {
 
   handleDirectoryClick = (evt, name) => {
     evt.preventDefault();
-    debugger
     this.props.modifyDirectoryList(name);
   }
 
@@ -49,26 +52,37 @@ class App extends Component {
 
   render() {
 
-    const { directory, directoryList = [], folderList = [] } = this.props.appReducer;
+    const { msg, directory, directoryList = [], folderList = [] } = this.props.appReducer;
 
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Folder System</h1>
+          <h2 className="App-title status">{ msg }</h2>
         </header>
         <div className = "directory-wrapper">
           { directoryList.map((eachDirectory, index)=> (
-            <DirectoryLink key = { index } name = { eachDirectory } onClick = { this.handleDirectoryClick } />
+            <DirectoryLink
+              key = { index }
+              name = { eachDirectory }
+              onClick = { this.handleDirectoryClick }
+              isLast = { index + 1 === directoryList.length ? true : false }
+            />
           ))}
         </div>
         <div className="wrapper">
             <div className="folder-system">
-                <FolderWrapper folderList = { folderList } onClick = { this.changeDirectory } />
+                <FolderWrapper
+                  folderList = { folderList }
+                  onClick = { this.changeDirectory }
+                />
             </div>
         </div>
         <button onClick = { this.showModal }>+ NEW FOLDER</button>
         { this.state.showFolderModal &&
-          <CreateFolderModal onClick = { this.createFolder } />
+          <CreateFolderModal
+            onClick = { this.createFolder }
+          />
         }
       </div>
     );

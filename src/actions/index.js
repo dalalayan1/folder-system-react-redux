@@ -26,9 +26,9 @@ export const modifyDirectoryList = (data) => {
     }
 }
 
-export const removeItem = (data) => {
+export const removeFolder = (data) => {
     return {
-        type: 'REMOVE_CARD',
+        type: 'REMOVE_FOLDER',
         item: data
     }
 }
