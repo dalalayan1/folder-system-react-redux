@@ -1,5 +1,5 @@
-# Drag and drop app
+# Folder system
 
-A dummy app to show drag and drop between lists.
+A drive kind of folder system
 
 Tech stack - React/Redux
